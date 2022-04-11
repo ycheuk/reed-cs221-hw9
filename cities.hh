@@ -39,5 +39,10 @@ class Cities {
     permutation_t random_permutation(unsigned len) const;
 
   private:
-    std::vector<coor_d> cityVect_;
+    std::istream& operator>>(std::istream& input, Cities& cities);
+    std::ostream& operator<<(std::ostream& output, Cities& cities);
+
+    std::vector<coord_t> cityVect_;
+
+    double total_path_distance(const permutation_t& ordering) const;
 };
