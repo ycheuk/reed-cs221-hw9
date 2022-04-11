@@ -20,3 +20,18 @@ double Cities::total_path_distance(const permutation_t& ordering) const {
 }
 
 Cities Cities::reorder(const permutation_t& ordering) const {
+  std::vector<coor_t> newOrder
+  for (int i : order){
+    newOrder.push_back(cityVect_[i]);
+  }
+  return Cities(newOrder);
+}
+
+Cities::permutation_t random_permutation(unsigned len){
+  std::vector<unsigned int> perm;
+  unsigned i = 0;
+  while (i < len){
+    perm.push_back(i);
+    i++;
+  }
+}
