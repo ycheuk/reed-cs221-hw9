@@ -2,7 +2,7 @@
 // Coded by Yik Yin Cheuk and Vaughn Zaayer
 
 #include "cities.hh"
-#include <vector>
+#include <vector> 
 
 // Returns the distance between two city coord pairs
 double Cities::dist_between(cityA, cityB) const {
