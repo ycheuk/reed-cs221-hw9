@@ -25,7 +25,7 @@ double Cities::total_path_distance(const permutation_t& ordering) const {
 
 Cities Cities::reorder(const permutation_t& ordering) const {
   auto permuted_cities = new Cities();
-  std::vector<coor_t> newOrder = {} // Empty vector
+  std::vector<coord_t> newOrder = {} // Empty vector
   for (int i : ordering){
     newOrder.push_back(cityVect_[i]);
   }
