@@ -36,4 +36,5 @@ class Cities {
     permutation_t random_permutation(unsigned len) const;
 
   private:
+    std::vector<coor_d> cityVect_;
 };
