@@ -1,3 +1,6 @@
+// CSCI 221 - HW9 (cities.hh)
+// Coded by Yik Yin Cheuk and Vaughn Zaayer
+
 /*
  * API file for Travelling-Salesperson Cities class and utilities
  */
