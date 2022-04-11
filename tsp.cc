@@ -1,7 +1,7 @@
 // CSCI 221 - HW9 (tsp.cc)
 // Coded by Yik Yin Cheuk and Vaughn Zaayer
 
-#include "cities.hh" 
+#include "cities.hh"
 
 // Performs the actual search
 int main(int argc, char** argv) {
