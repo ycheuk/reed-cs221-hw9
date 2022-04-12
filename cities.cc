@@ -4,6 +4,11 @@
 #include "cities.hh"
 #include <vector>
 
+// Creates vector of coordinates
+Cities::Cities(std::vector<coord_t> cities)
+  :cityVect_(cities)
+{}
+
 std::istream& operator >> (std::istream& in, Cities& cities_ls){
     int x;
     while(input >> x) { // While stream is not done
@@ -27,7 +32,7 @@ double Cities::dist_between(coord_t cityA, coord_t cityB) const {
   return std::hypot(static_cast<double>(cityA.first-cityB.first), static_cast<double>(cityA.second-cityB.second));
 }
 
-// Returns the total path distance from the given list of cities
+// Returns total path distance
 double Cities::total_path_distance(const permutation_t& ordering) const {
   auto cityPath = reorder(ordering).cityElements;
   // The total distance to traverse the cities in the order given by the permutation
@@ -56,8 +61,3 @@ Cities::random_permutation(unsigned len) const{
       permuted_nums.push_back(i);
   }
 }
-
-// Creates vector of coordinates
-Cities::Cities(std::vector<coord_t> cities)
-  :cityVect_(cities)
-{}
