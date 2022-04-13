@@ -55,7 +55,7 @@ Cities Cities::reorder(const permutation_t& ordering) const {
 Cities::permutation_t
 Cities::random_permutation(unsigned len) const
 {
-  //first create the ordered vector
+  // Create ordered vector
   permutation_t permuted_nums;
   for (unsigned int i = 0; i < len; i++) {
       permuted_nums.push_back(i);
