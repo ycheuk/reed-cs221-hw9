@@ -53,6 +53,23 @@ Cities Cities::reorder(const permutation_t& ordering) const {
 }
 
 Cities::permutation_t
+Cities::random_permutation(unsigned len) const
+{
+  //first create the ordered vector
+  permutation_t permuted_nums;
+  for (unsigned int i = 0; i < len; i++) {
+      permuted_nums.push_back(i);
+  }
+  // Time-based seed
+  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+  std::default_random_engine rng(seed);
+
+  // Shuffle function
+  std::shuffle(permuted_nums.begin(),permuted_nums.end(), rng);
+  return permuted_nums;
+}
+
+Cities::permutation_t
 Cities::random_permutation(unsigned len) const{
   // Create the ordered vector
   std::vector<unsigned int> permuted_nums;
