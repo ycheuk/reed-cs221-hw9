@@ -56,7 +56,11 @@ Cities Cities::reorder(const permutation_t& ordering) const {
   for (int i : ordering){
     newOrder.push_back(cityVect_[i]);
   }
-  return Cities(newOrder);
+  Cities newCities;
+  for (int i : newOrder) {
+    newCities.append_city_list(newOrder[i]);
+  }
+  return newCities;
 }
 
 Cities::permutation_t
