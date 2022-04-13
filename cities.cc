@@ -68,13 +68,3 @@ Cities::random_permutation(unsigned len) const
   std::shuffle(permuted_nums.begin(),permuted_nums.end(), rng);
   return permuted_nums;
 }
-
-Cities::permutation_t
-Cities::random_permutation(unsigned len) const{
-  // Create the ordered vector
-  std::vector<unsigned int> permuted_nums;
-  for (unsigned int i = 0; i < len; i++)
-  {
-      permuted_nums.push_back(i);
-  }
-}
