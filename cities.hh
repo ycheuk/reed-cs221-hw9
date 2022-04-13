@@ -8,6 +8,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 
 
@@ -27,12 +28,23 @@ class Cities {
     // the first two elements (coordinates) in the new Cities object.
     Cities reorder(const permutation_t& ordering) const;
 
+    // When provided with two city elements, this function will return the distance
+    // between the two elements and return it as a double type. 
+    double dist_between(const coord_t& cityA, const coord_t& cityB) const;
+
     // For a given permutation of the cities in this object,
     // compute how long (distance) it would take to traverse all the cities in the
     // order of the permutation, and then returning to the first city.
     // The distance between any two cities is computed as the Euclidean
     // distance on a plane between their coordinates.
     double total_path_distance(const permutation_t& ordering) const;
+
+
+    // Public function to append the list of cities present as a private variable
+    void append_city_list(const coord_t& city);
+
+    // Public function to get the list of cities from private cityVect_
+    std::vector<coord_t> get_city_list();
 
   private:
     std::vector<coord_t> cityVect_;

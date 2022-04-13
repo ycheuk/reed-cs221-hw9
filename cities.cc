@@ -3,11 +3,17 @@
 
 #include "cities.hh"
 #include <vector>
+#include <iostream>
+#include <cmath>
 
-// Creates vector of coordinates
-Cities::Cities(std::vector<coord_t> cities)
-  :cityVect_(cities)
-{}
+
+void Cities::append_city_list(const coord_t& city) {
+  cityVect_.push_back(city);
+}
+
+std::vector<Cities::coord_t> get_city_list() {
+  return cityVect_;
+}
 
 std::istream& operator >> (std::istream& input, Cities& cities){
     int x;
@@ -15,20 +21,20 @@ std::istream& operator >> (std::istream& input, Cities& cities){
         Cities::coord_t pair;
         pair.first = x;
         input >> pair.second;
-        cities.cityVect_.push_back(pair);
+        cities.append_city_list(pair);
     }
     return input;
 }
 
 std::ostream& operator << (std::ostream& output, Cities& cities){
-    for(Cities::coord_t elm: cities.cityVect_){
+    for(Cities::coord_t elm: cities.get_city_list()){
         output << elm.first << "\t" << elm.second << "\n";
     }
     return output;
 }
 
 // Used to calculate the distance between two city's coordinates
-double Cities::dist_between(coord_t cityA, coord_t cityB) const {
+double Cities::dist_between(const coord_t& cityA, const coord_t& cityB) const {
   // Thank you Gabe for telling me there was a better method :)
   return std::hypot(static_cast<double>(cityA.first-cityB.first), static_cast<double>(cityA.second-cityB.second));
 }
