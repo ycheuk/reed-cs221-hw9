@@ -8,8 +8,12 @@
 #pragma once
 
 #include <vector>
+#include <cmath>
+#include <algorithm>
 #include <iostream>
-
+#include <filesystem>
+#include <fstream>
+#include <random>
 
 
 // Representation of an ordering of cities
@@ -29,7 +33,7 @@ class Cities {
     Cities reorder(const permutation_t& ordering) const;
 
     // When provided with two city elements, this function will return the distance
-    // between the two elements and return it as a double type. 
+    // between the two elements and return it as a double type.
     double dist_between(const coord_t& cityA, const coord_t& cityB) const;
 
     // For a given permutation of the cities in this object,
@@ -44,7 +48,7 @@ class Cities {
     void append_city_list(const coord_t& city);
 
     // Public function to get the list of cities from private cityVect_
-    std::vector<coord_t> get_city_list();
+    const std::vector<coord_t>& get_city_list() const {return cityVect_;}
 
   private:
     std::vector<coord_t> cityVect_;
