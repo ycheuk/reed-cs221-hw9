@@ -61,8 +61,8 @@ Cities::random_permutation(unsigned len) const
       permuted_nums.push_back(i);
   }
   // Time-based seed
-  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-  std::default_random_engine rng(seed);
+  unsigned genSeed = std::chrono::system_clock::now().time_since_epoch().count();
+  std::default_random_engine rng(genSeed);
 
   // Shuffle function
   std::shuffle(permuted_nums.begin(),permuted_nums.end(), rng);
