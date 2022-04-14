@@ -4,22 +4,18 @@
 #include "cities.hh"
 #include <vector>
 #include <iostream>
+#include <cmath>
+#include <random>
+#include <chrono>
 #include <algorithm>
+
 
 void Cities::append_city_list(const coord_t& city) {
   cityVect_.push_back(city);
 }
 
-/*
-std::vector<Cities::coord_t> get_city_list() {
+std::vector<std::pair<int, int>>& Cities::get_city_list() {
   return cityVect_;
-}
-*/
-
-// Used to calculate the distance between two city's coordinates
-double Cities::dist_between(const coord_t& cityA, const coord_t& cityB) const {
-  // Thank you Gabe for telling me there was a better method :)
-  return std::hypot(static_cast<double>(cityA.first-cityB.first), static_cast<double>(cityA.second-cityB.second));
 }
 
 std::istream& operator >> (std::istream& input, Cities& cities){
@@ -40,6 +36,12 @@ std::ostream& operator << (std::ostream& output, Cities& cities){
     return output;
 }
 
+// Used to calculate the distance between two city's coordinates
+double Cities::dist_between(const coord_t& cityA, const coord_t& cityB) const {
+  // Thank you Gabe for telling me there was a better method :)
+  return std::hypot(static_cast<double>(cityA.first-cityB.first), static_cast<double>(cityA.second-cityB.second));
+}
+
 // Returns total path distance
 double Cities::total_path_distance(const permutation_t& ordering) const {
   auto cityPath = reorder(ordering).cityVect_;
@@ -53,21 +55,21 @@ double Cities::total_path_distance(const permutation_t& ordering) const {
 }
 
 Cities Cities::reorder(const permutation_t& ordering) const {
-  auto newOrder = new Cities();
-  std::vector<coord_t> permutedElmts;
+  std::vector<coord_t> newOrder;
   for (int i : ordering){
-      permutedElmts.push_back(this->cityVect_.at(i));
+    newOrder.push_back(cityVect_[i]);
   }
-  for (long unsigned int i = permutedElmts.size(); i < (this->cityVect_.size()); i++){
-      permutedElmts.push_back(this->cityVect_.at(i - 1));
+  Cities newCities;
+  for (auto &newOrder : city) {
+    newCities.append_city_list(city);
   }
-  newOrder->cityVect_ = permutedElmts;
-  return *newOrder;
+  return newCities;
 }
 
-Cities::permutation_t random_permutation(unsigned len){
+Cities::permutation_t Cities::random_permutation(unsigned len) const
+{
   // Create ordered vector
-  Cities::permutation_t permuted_nums;
+  permutation_t permuted_nums;
   for (unsigned int i = 0; i < len; i++) {
       permuted_nums.push_back(i);
   }
