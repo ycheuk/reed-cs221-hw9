@@ -8,6 +8,7 @@
 #include <cmath>
 #include <random>
 #include <chrono>
+#include <cassert>
 
 void Cities::append_city_list(const coord_t& city) {
   cityVect_.push_back(city);

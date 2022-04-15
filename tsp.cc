@@ -4,6 +4,7 @@
 #include "cities.hh"
 #include <fstream>
 #include <iostream>
+#include <cassert>
 
 // Performs the actual search
 int main(int argc, char** argv) {
@@ -11,7 +12,13 @@ int main(int argc, char** argv) {
     std::cerr << "No File Provided\n";
       return 1;
   }
+
+  std::string filename = argv[1];
+
+
+  std::cout << filename << std::endl;
   std::ifstream readStream;
+  readStream.open(filename);
   if(!readStream) {
     std::cerr << "Failed to open provided file \n";
     return 1;
@@ -19,8 +26,11 @@ int main(int argc, char** argv) {
   Cities map;
 
   readStream >> map;    // Reads in the cities from the given file
+  readStream.close();
 
   int max = 1000000; // Iterates over a fixed number
+
+  std::cout << "TSP pass" << std::endl;
 
   // Generates a new random permutation
   for(int i = 0; i < max; i++) {
@@ -33,5 +43,10 @@ int main(int argc, char** argv) {
         shortestLen = newLen;
         std::cout << i << "\t" << shortestLen << "\n";
     }
+
+    std::ofstream outfile ("shortest.tsv");
+    outfile << shortestLen;
+    outfile.close();
+
   }
 }
