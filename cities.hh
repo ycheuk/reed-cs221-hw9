@@ -56,9 +56,11 @@ class Cities {
     Cities::permutation_t random_permutation(unsigned len);
 
   private:
+    // Private vector to keep track of all cities
     std::vector<coord_t> cityVect_;
 };
 
+// Promises to override << and >> operators for in/out streams
 std::istream& operator>>(std::istream& input, Cities& cities);
 std::ostream& operator<<(std::ostream& output, Cities& cities);
 

@@ -1,5 +1,5 @@
 CXX = g++
-FLAGS = -Wall -Wextra -pedantic -Werror -std=c++17 -g
+FLAGS = -Wall -Wextra -pedantic -Werror -std=c++17 -g 
 
 cities_test: cities.o tsp.o
 	$(CXX) $(CXXFLAGS) -o tsp tsp.o cities.o 
