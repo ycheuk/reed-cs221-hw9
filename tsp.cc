@@ -34,6 +34,9 @@ int main(int argc, char** argv) {
 
   double shortestLen = 999999999999;
   // Generates a new random permutation
+
+  std::ofstream outfile ("shortest.tsv");
+
   for(int i = 0; i < max; i++) {
     Cities::permutation_t order = map.random_permutation(map.get_city_list().size());
     Cities city = map.reorder(order);
@@ -42,13 +45,14 @@ int main(int argc, char** argv) {
     if(newLen < shortestLen) {
         shortestLen = newLen;
         std::cout << i << "\t" << shortestLen << "\n";
+        outfile << i << "\t" << shortestLen << "\n";
     }
 
 
   }
 
-  std::ofstream outfile ("shortest.tsv");
-  outfile << shortestLen;
+
+  outfile << shortestLen << std::endl;
   outfile.close();
 
 
